@@ -264,7 +264,9 @@ class App extends Component {
   //   componentDidMount() {
   //     this.setTimerInterval()
   //   }
-
+componentDidMount() {
+    this.timerId = setInterval(this.setTimer, 1000)
+  }
   updateImage = thumbnailUrl => {
     const {imgUrl} = this.state
     const image = imagesList.filter(
@@ -298,6 +300,12 @@ class App extends Component {
   //       this.setState({isTrue: true})
   //     }
   //   }
+  setTimer = () => {
+    const {time} = this.state
+    if (time > 0) {
+      this.setState(prevState => ({time: prevState.time - 1}))
+    }
+  }
 
   playAgain = () => {
     this.setState({
